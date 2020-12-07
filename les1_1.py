@@ -30,16 +30,18 @@ if n.isdigit() and nn.isdigit() and nnn.isdigit():
 else:
     print(NOT_DIGIT)
 
-number = input('Enter some number')
-large_number = ''
-i = 0
-while i < len(number):
-    if number[i] < number[i-1]:
-        i = i + 1
-        continue
-    else:
-        large_number = number[i]
-print(large_number)
+positive_integer = input('Enter some positive integer, and I\'ll find the largest one digit!\n>>>')
+large_digit = 0
+if positive_integer.isdigit():
+    positive_integer = int(positive_integer)
+    while positive_integer > 0:
+        residual = positive_integer % 10
+        if residual > large_digit:
+            large_digit = residual
+        positive_integer = int(positive_integer / 10)
+else:
+    print(NOT_DIGIT)
+print(f'The largest number is {result}.')
 
 revenue_value = input('Enter the income value wich your firm have earned in last year, in rubles.\n>>>')
 costs_value = input('Enter the costs value wich your firm have spend in last year, in rubles.\n>>>')
@@ -48,7 +50,7 @@ if revenue_value.isdigit() and costs_value.isdigit():
     costs_value = int(costs_value)
     if revenue_value > costs_value:
         profit_value = revenue_value - costs_value
-        profitability = profit_value / revenue_value * 100
+        profitability = round(profit_value / revenue_value * 100, 2)
         system_message = f'Your\'s firm had profit in last year, the value of profit was - {profit_value} rubles.\n Profitability of the firms revenue is {profitability}%.'
         print(system_message)
     elif revenue_value < costs_value:
@@ -60,4 +62,17 @@ if revenue_value.isdigit() and costs_value.isdigit():
         print(system_message)
 else:
     print(NOT_DIGIT)
+
+a = input('Enter the number of kilometers that you have done the first day of training.\n>>>')
+b = input('Enter the number of kilometers that you want to handle with per day.\n>>>')
+day_number = 1
+if a.isdigit() and b.isdigit():
+    a = int(a)
+    b = int(b)
+    while a < b:
+        a += a * 10 / 100
+        day_number += 1
+        if a > b:
+            break
+print(f'You will achieve the goal of more than {b} kilometers per day at {day_number} days')
 
