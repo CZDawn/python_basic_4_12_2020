@@ -11,6 +11,7 @@
 '''
 
 def subtotal(*args):
+    '''Return sum of entered integers'''
     result = 0
     exit_flag = False
     for item in args:
