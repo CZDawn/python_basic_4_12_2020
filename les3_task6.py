@@ -11,6 +11,7 @@
 
 '''
 def int_func(some_string: str):
+    '''Return the string with entered words from bid leters'''
     return some_string.title()
 
 some_string = input('Enter string of word from little leter.\n>>>')
