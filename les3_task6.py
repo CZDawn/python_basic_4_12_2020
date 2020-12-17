@@ -10,6 +10,15 @@
 Необходимо использовать написанную ранее функцию int_func().
 
 '''
+def int_func(some_string: str):
+    return some_string.title()
+
+some_string = input('Enter string of word from little leter.\n>>>')
+print(int_func(some_string))
+
+'''
+
+Alternative way:
 
 def int_func(some_string: str):
     return ''.join((some_string[0].upper(), some_string[1:])) if some_string else some_string
@@ -17,6 +26,6 @@ def int_func(some_string: str):
 def user_temp(some_string: str):
     return ' '.join(map(int_func, some_string.split(' ')))
 
-some_string = input('Enter string of word from little leter.\n>>>')
-print(user_temp(some_string))
+'''
+
 
