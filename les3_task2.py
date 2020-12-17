@@ -11,14 +11,14 @@ def user_info(**kwargs):
     ''' Return string with user data
 
     named arguments (**kwargs):
-    name -- user name (default - string)
-    surname -- user surname (default - string)
-    year -- user year of birth (default - string)
-    city -- user city of living (default - string)
-    email -- user email (default - string)
-    phone -- user phone number (defaultt - string)
+    arg_1 -- user name (default - string)
+    arg_2 -- user surname (default - string)
+    arg_3 -- user year of birth (default - integer)
+    arg_4 -- user city of living (default - string)
+    arg_5 -- user email (default - string)
+    arg_6 -- user phone number (defaultt - string)
 
-    >>> user_info(name='Ivan', surname='Ivanov', year_of_birth='2000', city='Moskow', email='info@gmail.com', phone='+7900000000')
+    >>> user_info(name='Ivan', surname='Ivanov', year='2000', city='Moskow', email='info@gmail.com', phone='+7900000000')
     Ivan Ivanov, 2000, Moskow, info@gmail.com, +79000000000
     '''
 

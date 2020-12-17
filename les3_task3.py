@@ -6,6 +6,7 @@
 '''
 
 def my_func(*args):
+    ''' Return sum of arguments'''
     args = list(args)
     args.sort(reverse=True)
     args.pop(len(args) - 1)
