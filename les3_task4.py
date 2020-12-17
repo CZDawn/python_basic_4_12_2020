@@ -14,6 +14,7 @@ def my_multip(x, y):
     return result
 
 def my_funck(x: float, y: int):
+    '''Return exponentiation result'''
     result = 1
     for _ in range(abs(y)):
         result = my_multip(result, x)
