@@ -12,4 +12,13 @@
 '''
 n = 4
 def fact(n):
+    prev = 1
+    result = 1
+    for num in range(1, n + 1):
+        result *= num
+        yield result
+
+num = int(input('Enter en integer to find the factorial from that number'))
+for el in fact(num):
+    print(el)
 
