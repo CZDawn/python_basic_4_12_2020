@@ -4,6 +4,9 @@
 Об окончании ввода данных свидетельствует пустая строка.
 
 '''
+import os
+
+file_path = os.path.join(os.path.dirname(__file__), 'task_1.txt')
 
 text = []
 while True:
@@ -13,7 +16,7 @@ while True:
     elif not some_text:
         break
 
-with  open('task_1.txt', 'w', encoding='UTF-8') as file:
+with  open(file_path, 'w', encoding='UTF-8') as file:
     for item in text:
         file.write(item + '\n')
 
