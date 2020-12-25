@@ -26,8 +26,8 @@ with open(file_path, 'r', encoding='UTF-8') as file:
     for el in sys_messages:
         print(el)
     print('The values of sallary less 20000 rubles have:')
-    for el in sallary_less:
-        print(f'{sallary_less.index(el)+1} {el}')
+    for ind, el in enumerate(sallary_less, 1):
+        print(ind, el)
     medium_sallary = total_sallary / len(my_dict)
     print(f'The medium sallary of workers is: {medium_sallary} rubles')
 
