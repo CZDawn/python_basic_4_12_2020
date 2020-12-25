@@ -7,8 +7,7 @@
 from typing import List
 import os
 
-file_name = 'task_2.txt'
-file_path = os.path.join(os.path.dirname(__file__), file_name)
+file_path = os.path.join(os.path.dirname(__file__), 'task_2.txt')
 
 def get_counts(file_path: str) -> List[List[str]]:
     temp_list = []
