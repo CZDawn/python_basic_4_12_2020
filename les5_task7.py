@@ -29,26 +29,41 @@
 
 import os
 import json
+from functools import reduce
 
 file_path = os.path.join(os.path.dirname(__file__), 'task_7.txt')
 
+def make_dict(some_list, iter_count, data_position):
+    new_list = []
+    i = 0
+    while i < len(some_list):
+        if some_list[i+data_position].isdigit():
+            new_list.append(int(''.join(some_list[i+data_position])))
+        else:
+            new_list.append(''.join(some_list[i+data_position]))
+        i += iter_count
+    return new_list
+
 with open(file_path, 'r', encoding='UTF-8') as file:
     content = file.read().split()
-    proceeds_list = []
-    costs_list = []
+    firm_name_list = make_dict(content, 4, 0)
+    proceeds_list = make_dict(content, 4, 2)
+    costs_list = make_dict(content, 4, 3)
     profits_list = []
+    financial_result = []
     i = 0
-    while i < len(content):
-        proceeds_list.append(int(''.join(content[i+2])))
-        costs_list.append(int(''.join(content[i+3])))
-        i += 4
-    j = 0
-    while j < len(proceeds_list):
-        profits_list.append(proceeds_list[j] - costs_list[j])
-        j += 1 
+    while i < len(proceeds_list):
+        result = proceeds_list[i] - costs_list[i]
+        if result > 0:
+            profits_list.append(result)
+            financial_result.append(result)
+        else:
+            financial_result.append(result)
+        i += 1
+    average_profit = {'average_profit': round(sum(profits_list) / len(profits_list), 2)}
+    fin_result_dict = dict(zip(firm_name_list, financial_result))
+    result_list = [fin_result_dict, average_profit]
 
-print(content)
-print(proceeds_list)
-print(costs_list)
-print(profits_list)
+with open('task_7_result.json', 'w', encoding='UTF-8') as file:
+    json.dump(result_list, file)
 
