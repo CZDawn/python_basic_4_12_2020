@@ -1,0 +1,4 @@
+Some string with text number 1
+The next string with some text here number 2
+And an extra one string with some even more word number 3
+And even more text for check how it works for some cases if some thing go wrong in string numbe 4
