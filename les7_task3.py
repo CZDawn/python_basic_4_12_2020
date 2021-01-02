@@ -43,7 +43,7 @@
 
 class Cell:
     def __init__(self, cell_quantity):
-        self.__cell_quantity = sell_quantity
+        self.__cell_quantity = cell_quantity
 
     def __add__(self, other):
         return Cell(self.__cell_quantity + other.__cell_quantity)
@@ -64,13 +64,13 @@ class Cell:
     def make_order(self, cells_in_line):
         if not isinstance(cells_in_line, int):
             raise TypeError('Integers type only!')
-        temp = self.cell_count // cells_in_line
-        temp2 = self.cell_count % cells_in_line
+        temp = self.__cell_quantity // cells_in_line
+        temp2 = self.__cell_quantity % cells_in_line
         result = '\n'.join(['*' * cells_in_line + '*' * temp2 if idx + 1 == temp and temp2 else '*' * cells_in_line for idx in range(temp)])
         return result
 
 if __name__ == '__main__':
-    c1 = Cell(10)
-    c2 = Cell(5)
-    c1.make_order(7)
+    c1 = Cell(20)
+    c2 = Cell(4)
+    c1.make_order(5)
 
