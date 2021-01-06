@@ -50,12 +50,12 @@ class OfficeEquipment:
                 equipments['Scaners']['items'].append(get_equipment)
             elif equipment_type == 'copier':
                 get_equipment = Copier.get_copier(equipment_type)
-                equipments['Copier']['quantity'] += 1
-                equipments['Copier']['quantity'].append(get_equipment)
+                equipments['Copiers']['quantity'] += 1
+                equipments['Copiers']['items'].append(get_equipment)
+            total_equipments += 1
             user_answer = input('Do you want to continue? Yes or No:\n>>>')
             user_answer = user_answer.lower()
             if user_answer == 'yes':
-                total_equipments += 1
                 continue
             else:
                 print(f'You have added {total_equipments} office equipments on warehouse.')
