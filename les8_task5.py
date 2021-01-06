@@ -29,12 +29,7 @@ class OfficeEquipment:
         self.__product = product
 
     @staticmethod
-    def get_equipment():
-        equipments = {
-                'Printers': {'quantity': 0, 'items': []},
-                'Scaners': {'quantity': 0, 'items': []},
-                'Copiers': {'quantity': 0, 'items': []}
-        }
+    def get_equipment(equipments: dict):
         total_equipments = 0
         while True:
             equipment_type = input('Enter a type of office equipment (printer, scaner, copier):\n>>>')
@@ -61,6 +56,35 @@ class OfficeEquipment:
                 print(f'You have added {total_equipments} office equipments on warehouse.')
                 break
         return equipments
+
+    @staticmethod
+    def issue_equipment(equipments: dict):
+        equipment_type =  input('Enter a type of equipment which you want to issue:\n>>>')
+        equipment_brand = input('Enter a brand of equipment which you want to issue:\n>>>')
+        equipment_model = input('Enter a model of equipment which you want to issue:\n>>>')
+
+        equipment_mode_title = ''
+        if equipment_type == 'printer' or equipment_type == 'copier':
+            equipment_mode_title = 'color'
+        elif equipment_type == 'scaner':
+            equipment_mode_title = 'fax_mode'
+
+        equipment_mode = input(f'Enter a color or fax mode of {equipment_type} (color or fax - "Yes", black or no fax - "No"):\n>>>')
+        equipment_mode = equipment_mode.lower()
+        if equipment_mode == 'yes':
+            equipment_mode = True
+        elif equipment_mode == 'no':
+            equipment_mode = False
+
+        recipient = input('Enter a recipient of equipment:\n>>>')
+        send_el = {'type': equipment_type, 'brand': equipment_brand, 'model': equipment_model, equipment_mode_title: equipment_mode}
+        equipments_key = equipment_type.capitalize() + 's'
+        equipments[equipments_key]['quantity'] -= 1
+        pop_el = office_equipments[equipments_key]['items'].pop(office_equipments[equipments_key]['items'].index(send_el))
+        send_dict = {
+                recipient: pop_el
+        }
+        return send_dict
 
 
 class Printer(OfficeEquipment):
@@ -121,6 +145,14 @@ class Copier(OfficeEquipment):
         copier = {'type': equipment, 'brand': brand, 'model': model, 'color': color}
         return copier
 
-office_equipment = OfficeEquipment.get_equipment()
-print(office_equipment)
+office_equipments = {
+        'Printers': {'quantity': 0, 'items': []},
+        'Scaners': {'quantity': 0, 'items': []},
+        'Copiers': {'quantity': 0, 'items': []}
+}
+office_equipment_add = OfficeEquipment.get_equipment(office_equipments)
+print(office_equipments)
+office_equipment_issue = OfficeEquipment.issue_equipment(office_equipments)
+print(office_equipment_issue)
+print(office_equipments)
 
